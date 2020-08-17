@@ -1,0 +1,21 @@
+@using CSharpExam.Models
+@model User
+
+@{
+    var c = Model;
+}
+
+<a href="/bright_ideas">Bright Ideas</a>
+<a href="/logout">Logout</a>
+
+<div class="card-group">
+    <div class="card">
+    <div class="card-body">
+        <ul>
+            <li>Name: @c.Name</li>
+            <li>Alias: @c.Alias</li>
+            <li>Email: @c.Email</li>
+        </ul>
+    </div>
+    </div>
+</div>

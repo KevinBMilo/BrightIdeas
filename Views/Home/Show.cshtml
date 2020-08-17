@@ -1,0 +1,38 @@
+@using CSharpExam.Models
+@model Idea
+
+<a href="/bright_ideas">Bright Ideas</a>
+<a href="/logout">Logout</a>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td><a href="/users/@Model.UserId">@Model.Creator.Alias </a> says:</td>
+      <td>@Model.Content</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>People who liked this post:</h4>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th>Alias</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+        @{foreach(var lik in Model.Likes)
+        {
+    <tr>
+      <td><a href="/users/@lik.UserId">@lik.User.Alias</a></td>
+      <td>@lik.User.Name</td>
+    </tr>
+        }
+        }
+  </tbody>
+</table>
+
+
+
+

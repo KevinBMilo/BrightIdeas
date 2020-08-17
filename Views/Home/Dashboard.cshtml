@@ -1,0 +1,45 @@
+@using CSharpExam.Models
+@model ViewModel
+
+<a href="Logout">Logout</a>
+
+<h1>Hi, @ViewBag.UserId.Alias !</h1>
+
+<form asp-action="think" method="post" asp-controller="Home">
+<div class="form-group">
+    <label asp-for="NewIdea.Content"></label>
+    <textarea asp-for="NewIdea.Content" row="3" class="form-control" >post something witty here...</textarea>
+    <span class="text-danger" asp-validation-for="NewIdea.Content"></span>
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-secondary m-1">Add Idea!</button>
+</div>
+</form>
+
+<table class="table">
+  <tbody>
+        @foreach(var h in Model.AllIdeas)
+        {
+            <tr>
+              <td><a href="users/@h.UserId">@h.Creator.Alias</a> says:</td>
+              <td>@h.Content</td>
+            </tr>
+            <tr>
+              <td><a href="agree/@h.IdeaId">Like</a></td>
+        
+              <td><a href="bright_ideas/@h.IdeaId"> @h.Likes.Count() people</a> like this</td>
+        @if(h.UserId == Model.SessionData)
+            {
+              <td><a href="delete/@h.IdeaId" class="btn btn-secondary m-1">Delete</a></td>
+            }
+            </tr>
+          }
+  </tbody>
+</table>
+
+
+
+
+
+
+
